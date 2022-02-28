@@ -4,7 +4,13 @@ from .models import Post
 # Create your views here.
 
 
-def home(req):
+def blog(req):
 
     all_posts = Post.objects.all()
-    return render(req, 'index.html', {'posts': all_posts})
+    return render(req, 'blog/blog.html', {'posts': all_posts})
+
+
+def single_post(req, whateverstringiputhere):
+
+    single_post = Post.objects.get(slug=whateverstringiputhere)
+    return render(req, 'blog/single_post.html', {'post': single_post})
